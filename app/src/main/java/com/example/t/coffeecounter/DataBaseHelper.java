@@ -2,6 +2,7 @@ package com.example.t.coffeecounter;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -48,4 +49,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
 
     }
+    public Cursor getData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query  = "SELECT * FROM "+TABLE_NAME;
+        Cursor data = db.rawQuery(query,null);
+        return data;
+    }
+
 }
